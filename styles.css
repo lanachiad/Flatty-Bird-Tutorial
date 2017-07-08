@@ -10,8 +10,9 @@ body {
   display: table;
   height: 400px;
   margin: 0 auto;
+  overflow: hidden;
   position: relative;
-  width: 90%;
+  width: 99%;
 }
 
 #bird {
