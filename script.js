@@ -10,6 +10,7 @@ $(function() {
   var restart_btn = $('#restart_btn');
 
   // saving initial setup
+  var container_height = parseInt(container.css('height'));
   var container_width = parseInt(container.width());
   var pole_initial_position = parseInt(pole.css('right'));
   var pole_initial_height = parseInt(pole.css('height'));
@@ -22,27 +23,36 @@ $(function() {
 
   // the game
   var the_game = setInterval(function() {
-    var pole_current_position = parseInt(pole.css('right'));
+    if (
+      collision(bird, pole_1) ||
+      collision(bird, pole_2) ||
+      parseInt(bird.css('top')) <= 0 ||
+      parseInt(bird.css('top')) > container_height - bird_height
+    ) {
+      stop_the_game();
+    } else {
+      var pole_current_position = parseInt(pole.css('right'));
 
-    // check whether the poles are within the container
-    if (pole_current_position > container_width) {
-      // change the height of the poles when they restart
-      var new_height = parseInt(Math.random() * 100);
-      pole_1.css('height', pole_initial_height + new_height);
-      pole_2.css('height', pole_initial_height - new_height);
+      // check whether the poles are within the container
+      if (pole_current_position > container_width) {
+        // change the height of the poles when they restart
+        var new_height = parseInt(Math.random() * 100);
+        pole_1.css('height', pole_initial_height + new_height);
+        pole_2.css('height', pole_initial_height - new_height);
 
-      // increase speed
-      speed = speed + 1;
-      speed_span.text(speed);
+        // increase speed
+        speed = speed + 1;
+        speed_span.text(speed);
 
-      // reset the height position
-      pole_current_position = pole_initial_position;
-    }
+        // reset the height position
+        pole_current_position = pole_initial_position;
+      }
 
-    // move the poles
-    pole.css('right', pole_current_position + speed);
-    if (go_up === false) {
-      go_down();
+      // move the poles
+      pole.css('right', pole_current_position + speed);
+      if (go_up === false) {
+        go_down();
+      }
     }
   }, 40);
 
@@ -63,11 +73,37 @@ $(function() {
     }
   });
 
+  // makes elephant go down
   function go_down() {
     bird.css('top', parseInt(bird.css('top')) + 5);
   }
 
+  // makes elephant go up
   function up() {
     bird.css('top', parseInt(bird.css('top')) - 5);
+  }
+
+  function stop_the_game() {
+    clearInterval(the_game);
+    restart_btn.slideDown();
+  }
+
+  function collision($div1, $div2) {
+    var x1 = $div1.offset().left;
+    var y1 = $div1.offset().top;
+    var h1 = $div1.outerHeight(true);
+    var w1 = $div1.outerWidth(true);
+    var b1 = y1 + h1;
+    var r1 = x1 + w1;
+
+    var x2 = $div2.offset().left;
+    var y2 = $div2.offset().top;
+    var h2 = $div2.outerHeight(true);
+    var w2 = $div2.outerWidth(true);
+    var b2 = y2 + h2;
+    var r2 = x2 + w2;
+
+    if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
+    return true;
   }
 });
