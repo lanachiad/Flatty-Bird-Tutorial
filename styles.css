@@ -9,6 +9,7 @@ body {
   border: 2px red solid;
   height: 400px;
   margin-left: 4%;
+  margin-top: 25px;
   overflow: hidden;
   position: relative;
   width: 90%;
