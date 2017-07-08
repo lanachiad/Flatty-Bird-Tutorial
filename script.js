@@ -20,6 +20,8 @@ $(function() {
 
   // more declarations
   var go_up = false;
+  var score_updated = false;
+  var game_over = false;
 
   // the game
   var the_game = setInterval(function() {
@@ -33,8 +35,16 @@ $(function() {
     } else {
       var pole_current_position = parseInt(pole.css('right'));
 
-      // check whether the poles are within the container
+      // update score when the poles have passed successfully
+      if (pole_current_position > container_width - bird_left) {
+        if (score_updated === false) {
+          score.text(parseInt(score.text()) + 1);
+          score_updated = true;
+        }
+      }
+
       if (pole_current_position > container_width) {
+        // check whether the poles are within the container
         // change the height of the poles when they restart
         var new_height = parseInt(Math.random() * 100);
         pole_1.css('height', pole_initial_height + new_height);
@@ -43,6 +53,8 @@ $(function() {
         // increase speed
         speed = speed + 1;
         speed_span.text(speed);
+
+        score_updated = false;
 
         // reset the height position
         pole_current_position = pole_initial_position;
@@ -59,7 +71,7 @@ $(function() {
   // when you press down on space
   $(document).on('keydown', function(e) {
     var key = e.keyCode;
-    if (key === 32 && go_up === false) {
+    if (key === 32 && go_up === false && game_over === false) {
       go_up = setInterval(up, 50);
     }
   });
@@ -85,8 +97,13 @@ $(function() {
 
   function stop_the_game() {
     clearInterval(the_game);
+    game_over = true;
     restart_btn.slideDown();
   }
+
+  restart_btn.click(function() {
+    location.reload();
+  });
 
   function collision($div1, $div2) {
     var x1 = $div1.offset().left;
