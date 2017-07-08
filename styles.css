@@ -5,8 +5,10 @@ body {
 }
 
 #container {
-  background-color: aliceblue;
-  border: 2px red solid;
+  background: url('images/jungle.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px #000 solid;
   height: 400px;
   margin-left: 4%;
   margin-top: 25px;
