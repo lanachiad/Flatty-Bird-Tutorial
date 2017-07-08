@@ -7,11 +7,11 @@ body {
 #container {
   background-color: aliceblue;
   border: 2px red solid;
-  display: table;
   height: 400px;
-  margin: 0 auto;
+  margin-left: 4%;
+  overflow: hidden;
   position: relative;
-  width: 99%;
+  width: 90%;
 }
 
 #bird {
