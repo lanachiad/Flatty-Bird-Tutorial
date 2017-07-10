@@ -44,6 +44,14 @@ body {
   bottom: 0;
 }
 
+#mobile {
+  background-color: aliceblue;
+  display: none;
+  font-size: 20px;
+  height: 50px;
+  width: 100px;
+}
+
 #score_div {
   font-size: 40px;
   text-align: center;
@@ -60,4 +68,13 @@ body {
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+#huehue {
+  background: url('images/pup.jpg');
+  display: none;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
 }
