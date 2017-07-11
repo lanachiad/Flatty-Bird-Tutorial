@@ -79,3 +79,9 @@ body {
   width: 100%;
   z-index: 1000;
 }
+
+@media screen and (max-width: 1024px) {
+  #mobile {
+    display: block;
+  }
+}

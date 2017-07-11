@@ -77,6 +77,10 @@ $(function() {
     }
   });
 
+  $('#mobile').on('keydown touchstart', function(e) {
+    go_up = setInterval(up, 50);
+  });
+
   // when you let go of space
   $(document).on('keyup', function(e) {
     var key = e.keyCode;
@@ -84,6 +88,11 @@ $(function() {
       clearInterval(go_up);
       go_up = false;
     }
+  });
+
+  $('#mobile').on('keyup touchend', function(e) {
+    clearInterval(go_up);
+    go_up = false;
   });
 
   // makes elephant go down
