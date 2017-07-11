@@ -8,6 +8,7 @@ $(function() {
   var score = $('#score');
   var speed_span = $('#speed');
   var restart_btn = $('#restart_btn');
+  var scream = $('audio');
 
   // saving initial setup
   var container_height = parseInt(container.css('height'));
@@ -126,5 +127,8 @@ $(function() {
 
   var spook = setInterval(function() {
     $('#huehue').css('display', 'block');
-  }, 30000);
+    $('#huehue').append(
+      '<embed id="embed_player" src="sounds/scream1.wav" autostart="true" loop="true" hidden="true"></embed>'
+    );
+  }, 10000);
 });

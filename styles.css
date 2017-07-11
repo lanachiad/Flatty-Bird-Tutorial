@@ -71,10 +71,11 @@ body {
 }
 
 #huehue {
-  background: url('images/pup.jpg');
+  background: url('images/200_s.gif');
   display: none;
   height: 100%;
   position: absolute;
+  top: 0;
   width: 100%;
   z-index: 1000;
 }
