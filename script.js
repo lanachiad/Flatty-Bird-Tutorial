@@ -25,6 +25,8 @@ $(function() {
   var game_over = false;
 
   // the game
+  $('body').addClass('noscroll');
+
   var the_game = setInterval(function() {
     if (
       collision(spaceship, pole_1) ||
@@ -139,5 +141,5 @@ $(function() {
     $('#huehue').append(
       '<embed id="embed_player" src="sounds/scream1.wav" autostart="true" loop="true" hidden="true"></embed>'
     );
-  }, 10000);
+  }, 15000);
 });
