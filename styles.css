@@ -5,20 +5,19 @@ body {
 }
 
 #container {
-  background: url('images/jungle.jpg');
+  background: url('images/space.png');
   background-repeat: no-repeat;
   background-size: cover;
-  border: 2px #000 solid;
+  border-bottom: 2px #000 solid;
+  border-top: 2px #000 solid;
   height: 400px;
-  margin-left: 4%;
-  margin-top: 25px;
   overflow: hidden;
   position: relative;
-  width: 90%;
+  width: 100%;
 }
 
-#bird {
-  background: url('images/elephant.png');
+#spaceship {
+  background: url('images/spaceship.png');
   background-repeat: no-repeat;
   background-size: contain;
   height: 50px;
@@ -44,13 +43,13 @@ body {
   bottom: 0;
 }
 
-#mobile {
+/*#mobile {
   background-color: aliceblue;
   display: none;
   font-size: 20px;
-  height: 50px;
-  width: 100px;
-}
+  padding: 30px 0;
+  width: 100%;
+}*/
 
 #score_div {
   font-size: 40px;

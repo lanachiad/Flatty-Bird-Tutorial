@@ -1,7 +1,7 @@
 $(function() {
   // saving dom objects to variables
   var container = $('#container');
-  var bird = $('#bird');
+  var spaceship = $('#spaceship');
   var pole = $('.pole');
   var pole_1 = $('#pole_1');
   var pole_2 = $('#pole_2');
@@ -15,8 +15,8 @@ $(function() {
   var container_width = parseInt(container.width());
   var pole_initial_position = parseInt(pole.css('right'));
   var pole_initial_height = parseInt(pole.css('height'));
-  var bird_left = parseInt(bird.css('left'));
-  var bird_height = parseInt(bird.height());
+  var spaceship_left = parseInt(spaceship.css('left'));
+  var spaceship_height = parseInt(spaceship.height());
   var speed = 10;
 
   // more declarations
@@ -27,17 +27,17 @@ $(function() {
   // the game
   var the_game = setInterval(function() {
     if (
-      collision(bird, pole_1) ||
-      collision(bird, pole_2) ||
-      parseInt(bird.css('top')) <= 0 ||
-      parseInt(bird.css('top')) > container_height - bird_height
+      collision(spaceship, pole_1) ||
+      collision(spaceship, pole_2) ||
+      parseInt(spaceship.css('top')) <= 0 ||
+      parseInt(spaceship.css('top')) > container_height - spaceship_height
     ) {
       stop_the_game();
     } else {
       var pole_current_position = parseInt(pole.css('right'));
 
       // update score when the poles have passed successfully
-      if (pole_current_position > container_width - bird_left) {
+      if (pole_current_position > container_width - spaceship_left) {
         if (score_updated === false) {
           score.text(parseInt(score.text()) + 1);
           score_updated = true;
@@ -77,9 +77,9 @@ $(function() {
     }
   });
 
-  $('#mobile').on('keydown touchstart', function(e) {
-    go_up = setInterval(up, 50);
-  });
+  // $('#mobile').click(function(e) {
+  //   go_up = setInterval(up, 50);
+  // });
 
   // when you let go of space
   $(document).on('keyup', function(e) {
@@ -90,19 +90,19 @@ $(function() {
     }
   });
 
-  $('#mobile').on('keyup touchend', function(e) {
-    clearInterval(go_up);
-    go_up = false;
-  });
+  // $('#mobile').click(function(e) {
+  //   clearInterval(go_up);
+  //   go_up = false;
+  // });
 
   // makes elephant go down
   function go_down() {
-    bird.css('top', parseInt(bird.css('top')) + 5);
+    spaceship.css('top', parseInt(spaceship.css('top')) + 5);
   }
 
   // makes elephant go up
   function up() {
-    bird.css('top', parseInt(bird.css('top')) - 5);
+    spaceship.css('top', parseInt(spaceship.css('top')) - 5);
   }
 
   function stop_the_game() {
